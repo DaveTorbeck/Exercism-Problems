@@ -1,0 +1,1 @@
+Just some simple exercism problems I've had fun solving in Ruby.  
