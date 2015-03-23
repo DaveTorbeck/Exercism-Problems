@@ -1,24 +1,28 @@
 class Complement
-	@@map = {"G" => "C",
-  	       "C" => "G",
-  	       "T" => "A",
-  	       "A" => "U"}
+  def self.transcript 
+    {"G" => "C",
+     "C" => "G",
+     "T" => "A",
+     "A" => "U"}
+  end
 
-  def self.of_dna(strand)
-    strand.each_char.with_index do |letter, index| 
-      raise ArgumentError if @@map[letter].nil?
-      strand[index] = @@map[letter]
+  def self.of_dna(d_strand)
+    r_strand = ""
+    d_strand.each_char.with_index do |letter, index| 
+      raise ArgumentError if self.transcript[letter].nil?
+      r_strand[index] = self.transcript[letter]
     end
-    strand
+    r_strand
   end
 
 
-  def self.of_rna(strand)
-  	strand.each_char.with_index do |letter, index| 
-      raise ArgumentError if @@map.key(letter).nil?
-      strand[index] = @@map.key(letter)
+  def self.of_rna(r_strand)
+    d_strand = ""
+  	r_strand.each_char.with_index do |letter, index| 
+      raise ArgumentError if self.transcript.key(letter).nil?
+      d_strand[index] = self.transcript.key(letter)
     end
-    strand
+    d_strand
   end
 
 end
