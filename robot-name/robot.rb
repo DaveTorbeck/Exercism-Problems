@@ -1,5 +1,7 @@
 class Robot
   attr_reader :name
+  ALPHABET = ("A".."Z").to_a.freeze
+  NUMBERS = (0..9).to_a.freeze
 
   @@taken_names = [] 
 
@@ -14,12 +16,8 @@ class Robot
   private
 
   def generate_name
-    characters = ("A".."Z").to_a 
-    numbers = (0..9).to_a 
     loop do
-      chars_of_name = (0...2).map{ characters.to_a[rand(characters.size)] }.join
-      nums_of_name = (0...3).map{ numbers.to_a[rand(numbers.size)] }.join
-      name = chars_of_name + nums_of_name
+      name = ALPHABET.sample(2).join + NUMBERS.sample(3).join
       unless @@taken_names.include?(name)
         @@taken_names << name
         return name
